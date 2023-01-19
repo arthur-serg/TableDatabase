@@ -29,16 +29,17 @@ namespace TableDatabase
 
         private void generateTableButton_Click(object sender, EventArgs e)
         {
-            var text = this.textBox1.Text.ToString();
+            this.dataGridView1.Rows.Clear();
             double value;
-            var isParsed = Double.TryParse(text, out value);
+            var isParsed = Double.TryParse(this.textBox1.Text.ToString(), out value);
 
-            if (!isParsed)
+            if (isParsed && value > 0)
             {
-                return;
+                for (int i = 0; i < value - 1; ++i)
+                {
+                    this.dataGridView1.Rows.AddRange(new DataGridViewRow() { });
+                }
             }
-
-            this.dataGridView1.Rows.AddRange(new DataGridViewRow());
         }
     }
 }
