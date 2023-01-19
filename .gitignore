@@ -1,6 +1,8 @@
 .vs
 .idea
 [a-zA-Z.]*.user
+/TableDatabase/obj
+/TableDatabase/bin
 #/*
 #!readme.md
 #!.gitignore
