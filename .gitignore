@@ -3,6 +3,7 @@
 [a-zA-Z.]*.user
 /TableDatabase/obj
 /TableDatabase/bin
+/packages
 #/*
 #!readme.md
 #!.gitignore
