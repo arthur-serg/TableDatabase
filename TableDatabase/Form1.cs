@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -68,7 +69,7 @@ namespace TableDatabase
                 {
                     this.dataGridView1.Rows.Add(new object[]
                     {
-                        reader.GetValue(0), reader.GetValue(1),
+                        reader.GetValue(1), reader.GetValue(2),
                     });
                 }
             }
