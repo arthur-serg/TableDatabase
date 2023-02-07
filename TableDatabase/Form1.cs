@@ -12,7 +12,9 @@ namespace TableDatabase
 {
     public partial class Form1 : Form
     {
-        readonly DatabaseManager dbm = new DatabaseManager();
+        private readonly DBCreator DbCreator = new DBCreator();
+
+        private readonly DBWriter DbWriter = new DBWriter();
 
         public Form1()
         {
@@ -43,15 +45,21 @@ namespace TableDatabase
 
         private void saveToDatabaseButton_Click(object sender, EventArgs e)
         {
-            dbm.CreateDatabase();
+            DbCreator.Process();
         }
 
         private void LoadDatabase()
         {
-            dbm.DataReader = dbm.ReadDatabase();
-            while (dbm.DataReader.Read())
+            var DbReader = new DBReader();
+            DbReader.Process();
+            var reader = DbReader.DataReader;
+
+            while (reader.Read())
             {
-                this.dataGridView1.Rows.Insert(0, dbm.DataReader.GetString(0), dbm.DataReader.GetString(1));
+                this.dataGridView1.Rows.Add(new object[]
+                {
+                    reader.GetValue(0), reader.GetValue(1),
+                });
             }
         }
     }

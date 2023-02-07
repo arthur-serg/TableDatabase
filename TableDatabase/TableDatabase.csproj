@@ -51,7 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="DBReader.cs" />
+    <Compile Include="DBCreator.cs" />
+    <Compile Include="DBManager.cs" />
+    <Compile Include="DBWriter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
