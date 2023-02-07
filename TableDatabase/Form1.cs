@@ -53,7 +53,8 @@ namespace TableDatabase
 
             DbWriter.Grid = this.dataGridView1;
 
-            DbWriter.Process();
+            DbWriter.ProcessAsync();
+            //TODO: запретить изменять гридвью, пока в БД вставляются данные
         }
 
         private void LoadDatabase()

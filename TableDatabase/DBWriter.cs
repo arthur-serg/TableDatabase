@@ -14,6 +14,8 @@ namespace TableDatabase
     {
         public DataGridView Grid { get; set; }
 
+        public async Task ProcessAsync() => await Task.Run(Process);
+
         public override bool Process()
         {
             var connection = new SQLiteConnection(DbPath);
