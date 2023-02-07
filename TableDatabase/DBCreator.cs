@@ -13,7 +13,7 @@ namespace TableDatabase
     {
         public override bool Process()
         {
-            if (!System.IO.File.Exists(Application.StartupPath + "\\" + DB.DbName))
+            if (!isDbExists())
             {
                 using (var sqlConnection = new SQLiteConnection(DbPath))
                 {
@@ -32,11 +32,8 @@ namespace TableDatabase
                 return true;
             }
 
-            else
-            {
-                Debug.WriteLine($"Database: {Application.StartupPath + "\\" + DB.DbName} already exists.");
-                return false;
-            }
+            Debug.WriteLine($"Database: {Application.StartupPath + "\\" + DB.DbName} already exists.");
+            return false;
         }
     }
 }

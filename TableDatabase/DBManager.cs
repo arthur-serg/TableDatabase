@@ -18,6 +18,7 @@ namespace TableDatabase
 
     abstract class DBManager
     {
+        public bool isDbExists() => System.IO.File.Exists(Application.StartupPath + "\\" + DB.DbName);
         public string DbPath { get; } = @"URI=file: " + Application.StartupPath + "\\" + DB.DbName;
 
         public abstract bool Process();
