@@ -11,7 +11,6 @@ namespace TableDatabase
     class DBReader : DBManager
     {
         public SQLiteDataReader DataReader { get; set; }
-        public DataSet Data { get; set; }
 
         private void ReadDb()
         {
