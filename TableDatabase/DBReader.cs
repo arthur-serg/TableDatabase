@@ -13,18 +13,19 @@ namespace TableDatabase
         public SQLiteDataReader DataReader { get; set; }
         public DataSet Data { get; set; }
 
-        private bool ReadDb()
+        private void ReadDb()
         {
             var connection = new SQLiteConnection(DbPath);
             connection.Open();
             var query = new SQLiteCommand("select * from " + DB.TableName, connection);
             DataReader = query.ExecuteReader();
-            return true;
         }
 
         public override bool Process()
         {
-            return ReadDb();
+            if (!isDbExists()) return false;
+            ReadDb();
+            return true;
         }
     }
 }

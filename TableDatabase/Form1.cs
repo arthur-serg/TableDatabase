@@ -50,16 +50,20 @@ namespace TableDatabase
 
         private void LoadDatabase()
         {
-            var DbReader = new DBReader();
-            DbReader.Process();
-            var reader = DbReader.DataReader;
-
-            while (reader.Read())
+            if (DbCreator.isDbExists())
             {
-                this.dataGridView1.Rows.Add(new object[]
+                var DbReader = new DBReader();
+                DbReader.Process();
+                var reader = DbReader.DataReader;
+                if (reader == null) return;
+
+                while (reader.Read())
                 {
-                    reader.GetValue(0), reader.GetValue(1),
-                });
+                    this.dataGridView1.Rows.Add(new object[]
+                    {
+                        reader.GetValue(0), reader.GetValue(1),
+                    });
+                }
             }
         }
     }
