@@ -45,7 +45,14 @@ namespace TableDatabase
 
         private void saveToDatabaseButton_Click(object sender, EventArgs e)
         {
-            DbCreator.Process();
+            if (!DbCreator.isDbExists())
+            {
+                DbCreator.Process();
+            }
+
+            DbWriter.Grid = this.dataGridView1;
+
+            DbWriter.Process();
         }
 
         private void LoadDatabase()
