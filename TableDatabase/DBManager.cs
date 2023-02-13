@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace TableDatabase
 
     abstract class DBManager
     {
+        public DataTable DataTable { get; set; } = new DataTable();
+        public DataGridView Grid { get; set; } = new DataGridView();
         public bool isDbExists() => System.IO.File.Exists(Application.StartupPath + "\\" + DB.DbName);
         public string DbPath { get; } = @"URI=file: " + Application.StartupPath + "\\" + DB.DbName;
 

@@ -17,6 +17,10 @@ namespace TableDatabase
 
         private readonly DBWriter DbWriter = new DBWriter();
 
+        private DataTable dataTable = new DataTable();
+
+        private readonly ChartDrawer chartDrawer = new ChartDrawer();
+
         public Form1()
         {
             InitializeComponent();
@@ -44,7 +48,7 @@ namespace TableDatabase
             }
         }
 
-        private void saveToDatabaseButton_Click(object sender, EventArgs e)
+        private async void saveToDatabaseButton_Click(object sender, EventArgs e)
         {
             if (!DbCreator.isDbExists())
             {
@@ -53,7 +57,7 @@ namespace TableDatabase
 
             DbWriter.Grid = this.dataGridView1;
 
-            DbWriter.ProcessAsync();
+            await DbWriter.ProcessAsync();
             //TODO: запретить изменять гридвью, пока в БД вставляются данные
         }
 
@@ -73,6 +77,10 @@ namespace TableDatabase
                         reader.GetValue(1), reader.GetValue(2),
                     });
                 }
+
+                DbReader.FillDataTableFromGrid(this.dataGridView1, out this.dataTable);
+                chartDrawer.Chart = this.chart1;
+                chartDrawer.Init(this.dataGridView1, this.dataTable);
             }
         }
     }

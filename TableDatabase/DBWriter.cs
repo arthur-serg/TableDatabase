@@ -12,8 +12,6 @@ namespace TableDatabase
 {
     class DBWriter : DBManager
     {
-        public DataGridView Grid { get; set; }
-
         public async Task ProcessAsync() => await Task.Run(Process);
 
         public override bool Process()
