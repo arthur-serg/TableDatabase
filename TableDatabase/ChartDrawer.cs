@@ -16,13 +16,17 @@ namespace TableDatabase
 
         public bool Init(DataGridView dgv, DataTable dt)
         {
-            Chart.DataSource = dt;
-            Chart.DataBind();
-            Chart.Series["Series1"].XValueMember = "X";
-            Chart.Series["Series1"].YValueMembers = "Y";
-            //TODO: рисовать данные нормально, а не в порядке строк БД.
+            if (dt.Rows.Count > 0)
+            {
+                Chart.DataSource = dt;
+                Chart.DataBind();
+                Chart.Series["Series1"].XValueMember = "X";
+                Chart.Series["Series1"].YValueMembers = "Y";
+                return true;
+            }
 
-            return true;
+            return false;
+            //TODO: рисовать данные нормально, а не в порядке строк БД.
         }
     }
 }
