@@ -83,5 +83,10 @@ namespace TableDatabase
                 chartDrawer.Init(this.dataGridView1, this.dataTable);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            chartDrawer.Chart = this.chart1;
+        }
     }
 }
