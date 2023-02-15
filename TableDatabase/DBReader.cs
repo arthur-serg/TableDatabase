@@ -11,9 +11,11 @@ namespace TableDatabase
 
         private void ReadDb()
         {
+            var sqlExpression = "sp_Select";
             var connection = new SqlConnection(ConnectionString);
             connection.Open();
-            var query = new SqlCommand("select * from " + DB.TableName, connection);
+            var query = new SqlCommand(sqlExpression, connection);
+            query.CommandType = CommandType.StoredProcedure;
             DataReader = query.ExecuteReader();
 
             Grid.AllowUserToAddRows = false;

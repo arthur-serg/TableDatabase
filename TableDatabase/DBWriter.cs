@@ -1,4 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,12 +12,11 @@ namespace TableDatabase
 
         public override bool Process()
         {
-            //TODO: сделать хранимую процедуру и вставлять всё в ней, а здесь вызывать.
-
+            var sqlExpression = "sp_InsertPoint";
             var connection = new SqlConnection(ConnectionString);
             connection.Open();
-            var query = connection.CreateCommand();
-            query.CommandText = "insert into " + DB.TableName + "(X, Y) values(@X,@Y)";
+            var query = new SqlCommand(sqlExpression, connection);
+            query.CommandType = CommandType.StoredProcedure;
 
             var writerThread = new Thread(() =>
             {
