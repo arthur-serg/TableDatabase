@@ -6,7 +6,7 @@ namespace TableDatabase
     public static class DB
     {
         public static readonly string DbName = "database.db";
-        public static readonly string TableName = "PointsTable";
+        public static readonly string TableName = "pointstable";
         public static readonly string Hostname = "Database";
         public static readonly string X = "X";
         public static readonly string Y = "Y";
@@ -16,8 +16,9 @@ namespace TableDatabase
     {
         public DataTable DataTable { get; set; } = new DataTable();
         public DataGridView Grid { get; set; } = new DataGridView();
-        public bool isDbExists() => System.IO.File.Exists(Application.StartupPath + "\\" + DB.DbName);
-        public string DbPath { get; } = @"URI=file: " + Application.StartupPath + "\\" + DB.DbName;
+
+        public string ConnectionString { get; } =
+            @"Data Source=ASUS-A17\SQLEXPRESS;Initial Catalog=pointsdb;Integrated Security=True";
 
         public abstract bool Process();
     }

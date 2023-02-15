@@ -1,4 +1,4 @@
-﻿using System.Data.SQLite;
+﻿using System.Data.SqlClient;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,16 +10,17 @@ namespace TableDatabase
 
         public override bool Process()
         {
-            var connection = new SQLiteConnection(DbPath);
+            //TODO: сделать хранимую процедуру и вставлять всё в ней, а здесь вызывать.
+
+            var connection = new SqlConnection(ConnectionString);
             connection.Open();
             var query = connection.CreateCommand();
-            query.CommandText = "insert into " + DB.TableName + "(id, X, Y) values(@id,@X,@Y)";
+            query.CommandText = "insert into " + DB.TableName + "(X, Y) values(@X,@Y)";
 
             var writerThread = new Thread(() =>
             {
                 for (int i = 0; i < Grid.RowCount; ++i)
                 {
-                    query.Parameters.AddWithValue("id", i);
                     query.Parameters.AddWithValue("X", Grid.Rows[i].Cells["X"].Value);
                     query.Parameters.AddWithValue("Y", Grid.Rows[i].Cells["Y"].Value);
                     query.ExecuteNonQuery();

@@ -6,8 +6,6 @@ namespace TableDatabase
 {
     public partial class Form1 : Form
     {
-        private readonly DBCreator DbCreator = new DBCreator();
-
         private readonly DBWriter DbWriter = new DBWriter();
 
         private DataTable dataTable = new DataTable();
@@ -43,11 +41,6 @@ namespace TableDatabase
 
         private async void saveToDatabaseButton_Click(object sender, EventArgs e)
         {
-            if (!DbCreator.isDbExists())
-            {
-                DbCreator.Process();
-            }
-
             DbWriter.Grid = this.dataGridView1;
 
             await DbWriter.ProcessAsync();
@@ -56,25 +49,22 @@ namespace TableDatabase
 
         private void LoadDatabase()
         {
-            if (DbCreator.isDbExists())
+            var DbReader = new DBReader();
+            DbReader.Process();
+            var reader = DbReader.DataReader;
+            if (reader == null) return;
+
+            while (reader.Read())
             {
-                var DbReader = new DBReader();
-                DbReader.Process();
-                var reader = DbReader.DataReader;
-                if (reader == null) return;
-
-                while (reader.Read())
+                this.dataGridView1.Rows.Add(new object[]
                 {
-                    this.dataGridView1.Rows.Add(new object[]
-                    {
-                        reader.GetValue(1), reader.GetValue(2),
-                    });
-                }
-
-                DbReader.FillDataTableFromGrid(this.dataGridView1, out this.dataTable);
-                chartDrawer.Chart = this.chart1;
-                chartDrawer.Init(this.dataGridView1, this.dataTable);
+                    reader.GetValue(1), reader.GetValue(2),
+                });
             }
+
+            DbReader.FillDataTableFromGrid(this.dataGridView1, out this.dataTable);
+            chartDrawer.Chart = this.chart1;
+            chartDrawer.Init(this.dataGridView1, this.dataTable);
         }
 
         private void button1_Click(object sender, EventArgs e)

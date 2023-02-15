@@ -22,7 +22,6 @@ namespace TableDatabase
 
         public override bool Process()
         {
-            if (!isDbExists()) return false;
             ReadDb();
             Console.WriteLine(Grid.Rows.Count);
             return true;
