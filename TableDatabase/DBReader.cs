@@ -1,23 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace TableDatabase
 {
     class DBReader : DBManager
     {
-        public SQLiteDataReader DataReader { get; set; }
+        public SqlDataReader DataReader { get; set; }
 
         private void ReadDb()
         {
-            var connection = new SQLiteConnection(DbPath);
+            var connection = new SqlConnection(ConnectionString);
             connection.Open();
-            var query = new SQLiteCommand("select * from " + DB.TableName, connection);
+            var query = new SqlCommand("select * from " + DB.TableName, connection);
             DataReader = query.ExecuteReader();
 
             Grid.AllowUserToAddRows = false;
