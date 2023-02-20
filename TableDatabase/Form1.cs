@@ -71,5 +71,10 @@ namespace TableDatabase
         {
             chartDrawer.Chart = this.chart1;
         }
+
+        private void exportPlotButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

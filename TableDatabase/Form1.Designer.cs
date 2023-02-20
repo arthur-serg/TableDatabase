@@ -43,6 +43,7 @@ namespace TableDatabase
             this.saveToDatabaseButton = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
+            this.exportPlotButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -144,11 +145,22 @@ namespace TableDatabase
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // exportPlotButton
+            // 
+            this.exportPlotButton.Location = new System.Drawing.Point(258, 136);
+            this.exportPlotButton.Name = "exportPlotButton";
+            this.exportPlotButton.Size = new System.Drawing.Size(170, 25);
+            this.exportPlotButton.TabIndex = 9;
+            this.exportPlotButton.Text = "Export plot";
+            this.exportPlotButton.UseVisualStyleBackColor = true;
+            this.exportPlotButton.Click += new System.EventHandler(this.exportPlotButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 533);
+            this.Controls.Add(this.exportPlotButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.saveToDatabaseButton);
@@ -182,6 +194,7 @@ namespace TableDatabase
         private System.Windows.Forms.Button saveToDatabaseButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exportPlotButton;
     }
 }
 
