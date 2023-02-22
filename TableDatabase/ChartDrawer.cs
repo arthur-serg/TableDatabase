@@ -17,8 +17,10 @@ namespace TableDatabase
                 {
                     var x = dgv.Rows[i].Cells[0].Value;
                     var y = dgv.Rows[i].Cells[1].Value;
-
-                    Chart.Series["Series1"].Points.AddXY(x, y);
+                    if (x != null && y != null)
+                    {
+                        Chart.Series["Series1"].Points.AddXY(x, y);
+                    }
                 }
 
                 return true;
