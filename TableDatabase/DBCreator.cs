@@ -1,6 +1,5 @@
-﻿using System.Diagnostics;
-using System.Data.SQLite;
-
+﻿using System.Data;
+using System.Data.SqlClient;
 
 namespace TableDatabase
 {
@@ -8,18 +7,15 @@ namespace TableDatabase
     {
         public override bool Process()
         {
-            using (var sqlConnection = new SQLiteConnection(ConnectionString))
+            using (var sqlConnection = new SqlConnection(ConnectionString))
             {
-                sqlConnection.Open();
-                var query = sqlConnection.CreateCommand();
-                var transaction = sqlConnection.BeginTransaction();
-                query.CommandText = "create table " + DB.TableName + " (id int primary key, " + DB.X + " double " +
-                                    "," + DB.Y + " double " + ");";
-
+                var sqlExpression = "sp_DeleteRows";
+                var connection = new SqlConnection(ConnectionString);
+                connection.Open();
+                var query = new SqlCommand(sqlExpression, connection);
+                query.CommandType = CommandType.StoredProcedure;
                 query.ExecuteNonQuery();
-
-                transaction.Commit();
-                Debug.WriteLine("table " + DB.TableName + " was created");
+                connection.Close();
             }
 
             return true;

@@ -29,6 +29,8 @@ namespace TableDatabase
 
         private void generateTableButton_Click(object sender, EventArgs e)
         {
+            var dbCreator = new DBCreator();
+            dbCreator.Process();
             this.dataGridView1.Rows.Clear();
             var isParsed = double.TryParse(this.textBox1.Text.ToString(), out var value);
 
@@ -44,7 +46,6 @@ namespace TableDatabase
             DbWriter.Grid = this.dataGridView1;
 
             await DbWriter.ProcessAsync();
-            //TODO: запретить изменять гридвью, пока в БД вставляются данные
         }
 
         private void LoadDatabase()
