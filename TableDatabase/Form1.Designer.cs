@@ -29,9 +29,9 @@ namespace TableDatabase
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.exitButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -44,6 +44,7 @@ namespace TableDatabase
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
             this.exportPlotButton = new System.Windows.Forms.Button();
+            this.addRowsToTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -86,9 +87,9 @@ namespace TableDatabase
             // 
             this.generateTableButton.Location = new System.Drawing.Point(258, 38);
             this.generateTableButton.Name = "generateTableButton";
-            this.generateTableButton.Size = new System.Drawing.Size(170, 23);
+            this.generateTableButton.Size = new System.Drawing.Size(170, 33);
             this.generateTableButton.TabIndex = 3;
-            this.generateTableButton.Text = "Generate table";
+            this.generateTableButton.Text = "New table";
             this.generateTableButton.UseVisualStyleBackColor = true;
             this.generateTableButton.Click += new System.EventHandler(this.generateTableButton_Click);
             // 
@@ -110,36 +111,36 @@ namespace TableDatabase
             // 
             // saveToDatabaseButton
             // 
-            this.saveToDatabaseButton.Location = new System.Drawing.Point(258, 68);
+            this.saveToDatabaseButton.Location = new System.Drawing.Point(258, 73);
             this.saveToDatabaseButton.Name = "saveToDatabaseButton";
-            this.saveToDatabaseButton.Size = new System.Drawing.Size(170, 23);
+            this.saveToDatabaseButton.Size = new System.Drawing.Size(170, 33);
             this.saveToDatabaseButton.TabIndex = 6;
-            this.saveToDatabaseButton.Text = "Save to DB";
+            this.saveToDatabaseButton.Text = "Save table";
             this.saveToDatabaseButton.UseVisualStyleBackColor = true;
             this.saveToDatabaseButton.Click += new System.EventHandler(this.saveToDatabaseButton_Click);
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(435, 5);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(726, 487);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(258, 98);
+            this.button1.Location = new System.Drawing.Point(258, 143);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 32);
+            this.button1.Size = new System.Drawing.Size(170, 33);
             this.button1.TabIndex = 8;
             this.button1.Text = "Plot data";
             this.button1.UseVisualStyleBackColor = true;
@@ -147,19 +148,30 @@ namespace TableDatabase
             // 
             // exportPlotButton
             // 
-            this.exportPlotButton.Location = new System.Drawing.Point(258, 136);
+            this.exportPlotButton.Location = new System.Drawing.Point(258, 178);
             this.exportPlotButton.Name = "exportPlotButton";
-            this.exportPlotButton.Size = new System.Drawing.Size(170, 25);
+            this.exportPlotButton.Size = new System.Drawing.Size(170, 33);
             this.exportPlotButton.TabIndex = 9;
             this.exportPlotButton.Text = "Export plot";
             this.exportPlotButton.UseVisualStyleBackColor = true;
             this.exportPlotButton.Click += new System.EventHandler(this.exportPlotButton_Click);
+            // 
+            // addRowsToTable
+            // 
+            this.addRowsToTable.Location = new System.Drawing.Point(258, 108);
+            this.addRowsToTable.Name = "addRowsToTable";
+            this.addRowsToTable.Size = new System.Drawing.Size(170, 33);
+            this.addRowsToTable.TabIndex = 10;
+            this.addRowsToTable.Text = "Add to table";
+            this.addRowsToTable.UseVisualStyleBackColor = true;
+            this.addRowsToTable.Click += new System.EventHandler(this.addRowsToTable_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 533);
+            this.Controls.Add(this.addRowsToTable);
             this.Controls.Add(this.exportPlotButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.chart1);
@@ -195,6 +207,7 @@ namespace TableDatabase
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button exportPlotButton;
+        private System.Windows.Forms.Button addRowsToTable;
     }
 }
 

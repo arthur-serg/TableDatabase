@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using TableDatabase.Properties;
 
 namespace TableDatabase
 {
@@ -75,7 +76,12 @@ namespace TableDatabase
 
         private void exportPlotButton_Click(object sender, EventArgs e)
         {
+        }
 
+        private void addRowsToTable_Click(object sender, EventArgs e)
+        {
+            var addRowsForm = new AddRowsForm();
+            addRowsForm.Show();
         }
     }
 }
