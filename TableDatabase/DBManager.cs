@@ -12,7 +12,7 @@ namespace TableDatabase
         public static readonly string Y = "Y";
     };
 
-    abstract class DBManager
+    public abstract class DBManager
     {
         public DataTable DataTable { get; set; } = new DataTable();
         public DataGridView Grid { get; set; } = new DataGridView();

@@ -4,7 +4,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TableDatabase
 {
-    class ChartDrawer
+    public class ChartDrawer
     {
         public Chart Chart { get; set; } = new Chart();
 

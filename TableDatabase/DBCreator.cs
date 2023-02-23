@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace TableDatabase
 {
-    class DBCreator : DBManager
+    public class DBCreator : DBManager
     {
         public override bool Process()
         {

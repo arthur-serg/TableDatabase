@@ -7,13 +7,14 @@ namespace TableDatabase
 {
     public partial class Form1 : Form
     {
-        private readonly DBWriter DbWriter = new DBWriter();
+        public DBWriter DbWriter { get; set; } = new DBWriter();
 
-        private readonly DBCreator DbCreator = new DBCreator();
+        public DBCreator DbCreator { get; set; } = new DBCreator();
 
         private DataTable dataTable = new DataTable();
 
-        private readonly ChartDrawer chartDrawer = new ChartDrawer();
+        public ChartDrawer chartDrawer { get; set; } = new ChartDrawer();
+
 
         public Form1()
         {
@@ -95,8 +96,8 @@ namespace TableDatabase
 
         private void addRowsToTable_Click(object sender, EventArgs e)
         {
-            var addRowsForm = new AddRowsForm();
-            addRowsForm.Show();
+            var addRowsForm = new AddRowsForm(this);
+            addRowsForm.ShowDialog();
         }
     }
 }
