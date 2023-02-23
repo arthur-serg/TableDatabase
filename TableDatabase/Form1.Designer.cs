@@ -29,9 +29,9 @@ namespace TableDatabase
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.exitButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -89,7 +89,7 @@ namespace TableDatabase
             this.generateTableButton.Name = "generateTableButton";
             this.generateTableButton.Size = new System.Drawing.Size(170, 33);
             this.generateTableButton.TabIndex = 3;
-            this.generateTableButton.Text = "New table";
+            this.generateTableButton.Text = "Create new table";
             this.generateTableButton.UseVisualStyleBackColor = true;
             this.generateTableButton.Click += new System.EventHandler(this.generateTableButton_Click);
             // 
@@ -115,23 +115,23 @@ namespace TableDatabase
             this.saveToDatabaseButton.Name = "saveToDatabaseButton";
             this.saveToDatabaseButton.Size = new System.Drawing.Size(170, 33);
             this.saveToDatabaseButton.TabIndex = 6;
-            this.saveToDatabaseButton.Text = "Save table";
+            this.saveToDatabaseButton.Text = "Save as new table";
             this.saveToDatabaseButton.UseVisualStyleBackColor = true;
             this.saveToDatabaseButton.Click += new System.EventHandler(this.saveToDatabaseButton_Click);
             // 
             // chart1
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(435, 5);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(726, 487);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";

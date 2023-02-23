@@ -9,6 +9,8 @@ namespace TableDatabase
     {
         private readonly DBWriter DbWriter = new DBWriter();
 
+        private readonly DBCreator DbCreator = new DBCreator();
+
         private DataTable dataTable = new DataTable();
 
         private readonly ChartDrawer chartDrawer = new ChartDrawer();
@@ -48,9 +50,18 @@ namespace TableDatabase
 
         private async void saveToDatabaseButton_Click(object sender, EventArgs e)
         {
-            DbWriter.Grid = this.dataGridView1;
+            var rewrite =
+                MessageBox.Show(
+                    "Are you sure? This action will delete current table in DB. If you want to add data to current table without deleting click No",
+                    "Possible rewriting of table", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            await DbWriter.ProcessAsync();
+            if (rewrite == DialogResult.Yes)
+            {
+                DbCreator.Process();
+                DbWriter.Grid = this.dataGridView1;
+
+                await DbWriter.ProcessAsync();
+            }
         }
 
         private void LoadDatabase()
