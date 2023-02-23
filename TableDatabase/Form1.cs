@@ -30,12 +30,16 @@ namespace TableDatabase
 
         private void generateTableButton_Click(object sender, EventArgs e)
         {
-            var dbCreator = new DBCreator();
-            dbCreator.Process();
-            this.dataGridView1.Rows.Clear();
             var isParsed = double.TryParse(this.textBox1.Text.ToString(), out var value);
 
-            if (!isParsed || !(value > 0)) return;
+            if (!isParsed || !(value > 0))
+            {
+                MessageBox.Show("Incorrect value of rows count.", "Incorrect value", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            this.dataGridView1.Rows.Clear();
             for (int i = 0; i < value; ++i)
             {
                 this.dataGridView1.Rows.AddRange(new DataGridViewRow());
