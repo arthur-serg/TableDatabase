@@ -15,8 +15,8 @@ namespace TableDatabase
                 Chart.DataSource = dt;
                 for (int i = 0; i < dt.Rows.Count; ++i)
                 {
-                    var x = dgv.Rows[i].Cells[0].Value;
-                    var y = dgv.Rows[i].Cells[1].Value;
+                    var x = dgv.Rows[i].Cells[1].Value;
+                    var y = dgv.Rows[i].Cells[2].Value;
                     if (x != null && y != null)
                     {
                         Chart.Series["Series1"].Points.AddXY(x, y);
