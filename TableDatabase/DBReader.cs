@@ -19,7 +19,7 @@ namespace TableDatabase
             DataReader = query.ExecuteReader();
 
             Grid.AllowUserToAddRows = false;
-            Grid.ColumnCount = DataReader.FieldCount - 1;
+            Grid.ColumnCount = DataReader.FieldCount;
         }
 
         public override bool Process()

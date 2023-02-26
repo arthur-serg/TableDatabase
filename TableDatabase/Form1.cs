@@ -76,7 +76,7 @@ namespace TableDatabase
             {
                 this.dataGridView1.Rows.Add(new object[]
                 {
-                    reader.GetValue(1), reader.GetValue(2),
+                    reader.GetValue(0), reader.GetValue(1), reader.GetValue(2),
                 });
             }
 

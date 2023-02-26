@@ -57,7 +57,7 @@ namespace TableDatabase.Properties
 
         private void addRowsToGrid(DataGridView dgv1, DataGridView dgv2)
         {
-            //TODO: UI lag ?? need to debug this shit.
+            //TODO: stackoverflow ??? debug this shit.
 
             for (int i = 0; i < dgv2.Rows.Count; ++i)
             {
