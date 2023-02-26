@@ -15,6 +15,7 @@ namespace TableDatabase
 
         public ChartDrawer chartDrawer { get; set; } = new ChartDrawer();
 
+        public DataGridView Grid { get; set; }
 
         public Form1()
         {
@@ -42,10 +43,10 @@ namespace TableDatabase
                 return;
             }
 
-            this.dataGridView1.Rows.Clear();
+            this.Grid.Rows.Clear();
             for (int i = 0; i < value; ++i)
             {
-                this.dataGridView1.Rows.AddRange(new DataGridViewRow());
+                this.Grid.Rows.AddRange(new DataGridViewRow());
             }
         }
 
@@ -59,7 +60,7 @@ namespace TableDatabase
             if (rewrite == DialogResult.Yes)
             {
                 DbCreator.Process();
-                DbWriter.Grid = this.dataGridView1;
+                DbWriter.Grid = this.Grid;
 
                 await DbWriter.ProcessAsync();
             }
@@ -74,15 +75,15 @@ namespace TableDatabase
 
             while (reader.Read())
             {
-                this.dataGridView1.Rows.Add(new object[]
+                this.Grid.Rows.Add(new object[]
                 {
                     reader.GetValue(0), reader.GetValue(1), reader.GetValue(2),
                 });
             }
 
-            DbReader.FillDataTableFromGrid(this.dataGridView1, out this.dataTable);
+            DbReader.FillDataTableFromGrid(this.Grid, out this.dataTable);
             chartDrawer.Chart = this.chart1;
-            chartDrawer.Init(this.dataGridView1, this.dataTable);
+            chartDrawer.Init(this.Grid, this.dataTable);
         }
 
         private void button1_Click(object sender, EventArgs e)
