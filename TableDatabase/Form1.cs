@@ -15,7 +15,11 @@ namespace TableDatabase
 
         public ChartDrawer chartDrawer { get; set; } = new ChartDrawer();
 
-        public DataGridView Grid { get; set; }
+        public DataGridView Grid
+        {
+            get => this.dataGridView1;
+            set => dataGridView1 = value;
+        }
 
         public Form1()
         {
