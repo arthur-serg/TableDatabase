@@ -110,5 +110,10 @@ namespace TableDatabase
             var addRowsForm = new AddRowsForm(this);
             addRowsForm.ShowDialog();
         }
+
+        private void removeSelectedRowButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

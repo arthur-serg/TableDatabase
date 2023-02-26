@@ -35,6 +35,9 @@ namespace TableDatabase
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.exitButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.generateTableButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,9 +46,7 @@ namespace TableDatabase
             this.button1 = new System.Windows.Forms.Button();
             this.exportPlotButton = new System.Windows.Forms.Button();
             this.addRowsToTable = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.removeSelectedRowButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -69,9 +70,28 @@ namespace TableDatabase
             this.X,
             this.Y});
             this.dataGridView1.Location = new System.Drawing.Point(12, 5);
-            this.dataGridView1.Name = "Grid";
+            this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(240, 516);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // X
+            // 
+            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.X.HeaderText = "X";
+            this.X.Name = "X";
+            // 
+            // Y
+            // 
+            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Y.HeaderText = "Y";
+            this.Y.Name = "Y";
             // 
             // generateTableButton
             // 
@@ -101,7 +121,7 @@ namespace TableDatabase
             // 
             // saveToDatabaseButton
             // 
-            this.saveToDatabaseButton.Location = new System.Drawing.Point(258, 73);
+            this.saveToDatabaseButton.Location = new System.Drawing.Point(258, 74);
             this.saveToDatabaseButton.Name = "saveToDatabaseButton";
             this.saveToDatabaseButton.Size = new System.Drawing.Size(170, 33);
             this.saveToDatabaseButton.TabIndex = 6;
@@ -115,7 +135,7 @@ namespace TableDatabase
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(435, 5);
+            this.chart1.Location = new System.Drawing.Point(435, 4);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -128,7 +148,7 @@ namespace TableDatabase
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(258, 143);
+            this.button1.Location = new System.Drawing.Point(258, 418);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 33);
             this.button1.TabIndex = 8;
@@ -138,7 +158,7 @@ namespace TableDatabase
             // 
             // exportPlotButton
             // 
-            this.exportPlotButton.Location = new System.Drawing.Point(258, 178);
+            this.exportPlotButton.Location = new System.Drawing.Point(258, 458);
             this.exportPlotButton.Name = "exportPlotButton";
             this.exportPlotButton.Size = new System.Drawing.Size(170, 33);
             this.exportPlotButton.TabIndex = 9;
@@ -148,7 +168,7 @@ namespace TableDatabase
             // 
             // addRowsToTable
             // 
-            this.addRowsToTable.Location = new System.Drawing.Point(258, 108);
+            this.addRowsToTable.Location = new System.Drawing.Point(258, 110);
             this.addRowsToTable.Name = "addRowsToTable";
             this.addRowsToTable.Size = new System.Drawing.Size(170, 33);
             this.addRowsToTable.TabIndex = 10;
@@ -156,30 +176,22 @@ namespace TableDatabase
             this.addRowsToTable.UseVisualStyleBackColor = true;
             this.addRowsToTable.Click += new System.EventHandler(this.addRowsToTable_Click);
             // 
-            // id
+            // removeSelectedRowButton
             // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // X
-            // 
-            this.X.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.X.HeaderText = "X";
-            this.X.Name = "X";
-            // 
-            // Y
-            // 
-            this.Y.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Y.HeaderText = "Y";
-            this.Y.Name = "Y";
+            this.removeSelectedRowButton.Location = new System.Drawing.Point(258, 146);
+            this.removeSelectedRowButton.Name = "removeSelectedRowButton";
+            this.removeSelectedRowButton.Size = new System.Drawing.Size(170, 33);
+            this.removeSelectedRowButton.TabIndex = 11;
+            this.removeSelectedRowButton.Text = "Remove selected row";
+            this.removeSelectedRowButton.UseVisualStyleBackColor = true;
+            this.removeSelectedRowButton.Click += new System.EventHandler(this.removeSelectedRowButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 533);
+            this.Controls.Add(this.removeSelectedRowButton);
             this.Controls.Add(this.addRowsToTable);
             this.Controls.Add(this.exportPlotButton);
             this.Controls.Add(this.button1);
@@ -218,6 +230,7 @@ namespace TableDatabase
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn X;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y;
+        private System.Windows.Forms.Button removeSelectedRowButton;
     }
 }
 
