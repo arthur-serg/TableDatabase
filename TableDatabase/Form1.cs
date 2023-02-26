@@ -48,6 +48,12 @@ namespace TableDatabase
             {
                 this.Grid.Rows.AddRange(new DataGridViewRow());
             }
+
+            for (int i = 0; i < this.Grid.Rows.Count; ++i)
+            {
+                var row = this.Grid.Rows[i];
+                row.Cells[0].Value = i;
+            }
         }
 
         private async void saveToDatabaseButton_Click(object sender, EventArgs e)
