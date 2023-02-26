@@ -12,7 +12,7 @@ namespace TableDatabase.Properties
 {
     public partial class AddRowsForm : Form
     {
-        public Form1 mainForm { get; set; }
+        public Form1 MainForm { get; set; }
 
         public AddRowsForm()
         {
@@ -21,7 +21,7 @@ namespace TableDatabase.Properties
 
         public AddRowsForm(Form1 form1)
         {
-            mainForm = form1;
+            MainForm = form1;
             InitializeComponent();
         }
 
@@ -41,6 +41,12 @@ namespace TableDatabase.Properties
             {
                 this.dataGridView1.Rows.AddRange(new DataGridViewRow());
             }
+
+            for (int i = 0; i < this.dataGridView1.Rows.Count; ++i)
+            {
+                var row = this.dataGridView1.Rows[i];
+                row.Cells[0].Value = i + MainForm.Grid.Rows.Count;
+            }
         }
 
         private async void addDataToTableButton_Click(object sender, EventArgs e)
@@ -51,19 +57,19 @@ namespace TableDatabase.Properties
             };
 
             await dbWriter.ProcessAsync();
-            addRowsToGrid(dbWriter.Grid, this.dataGridView1);
+
+            addRowsToGrid(MainForm.Grid, this.dataGridView1);
             this.Close();
         }
 
         private void addRowsToGrid(DataGridView dgv1, DataGridView dgv2)
         {
-            //TODO: stackoverflow ??? debug this shit.
-
             for (int i = 0; i < dgv2.Rows.Count; ++i)
             {
                 var row = (DataGridViewRow)dgv2.Rows[i].Clone();
-                row.Cells[0].Value = dgv2.Rows[i].Cells[0].Value;
+                row.Cells[0].Value = dgv1.Rows.Count;
                 row.Cells[1].Value = dgv2.Rows[i].Cells[1].Value;
+                row.Cells[2].Value = dgv2.Rows[i].Cells[2].Value;
                 dgv1.Rows.Add(row);
             }
         }
