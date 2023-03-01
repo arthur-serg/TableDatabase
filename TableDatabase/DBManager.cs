@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace TableDatabase
@@ -17,8 +18,13 @@ namespace TableDatabase
         public DataTable DataTable { get; set; } = new DataTable();
         public DataGridView Grid { get; set; } = new DataGridView();
 
-        public string ConnectionString { get; } =
-            @"Data Source=ASUS-A17\SQLEXPRESS;Initial Catalog=pointsdb;Integrated Security=True";
+
+        public SqlConnectionStringBuilder SqlConnectionString { get; set; } = new SqlConnectionStringBuilder()
+        {
+            DataSource = @"ASUS-A17\SQLEXPRESS",
+            InitialCatalog = "pointsdb",
+            IntegratedSecurity = true,
+        };
 
         public abstract bool Process();
     }

@@ -13,7 +13,7 @@ namespace TableDatabase
         public override bool Process()
         {
             var sqlExpression = "sp_InsertPoint";
-            var connection = new SqlConnection(ConnectionString);
+            var connection = new SqlConnection(SqlConnectionString.ConnectionString);
             connection.Open();
             var query = new SqlCommand(sqlExpression, connection);
             query.CommandType = CommandType.StoredProcedure;

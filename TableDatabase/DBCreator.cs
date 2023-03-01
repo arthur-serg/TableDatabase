@@ -7,10 +7,10 @@ namespace TableDatabase
     {
         public override bool Process()
         {
-            using (var sqlConnection = new SqlConnection(ConnectionString))
+            using (var sqlConnection = new SqlConnection(SqlConnectionString.ConnectionString))
             {
                 var sqlExpression = "sp_DeleteRows";
-                var connection = new SqlConnection(ConnectionString);
+                var connection = new SqlConnection(sqlConnection.ConnectionString);
                 connection.Open();
                 var query = new SqlCommand(sqlExpression, connection);
                 query.CommandType = CommandType.StoredProcedure;

@@ -12,7 +12,7 @@ namespace TableDatabase
         private void ReadDb()
         {
             var sqlExpression = "sp_Select";
-            var connection = new SqlConnection(ConnectionString);
+            var connection = new SqlConnection(SqlConnectionString.ConnectionString);
             connection.Open();
             var query = new SqlCommand(sqlExpression, connection);
             query.CommandType = CommandType.StoredProcedure;
