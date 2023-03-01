@@ -113,7 +113,10 @@ namespace TableDatabase
 
         private void removeSelectedRowButton_Click(object sender, EventArgs e)
         {
+            var selectedRowId = this.Grid.CurrentRow.Cells["id"].Value;
+            var selectedRowDeleter = new DBRowByIDDeleter((int)selectedRowId);
 
+            selectedRowDeleter.Process();
         }
     }
 }
