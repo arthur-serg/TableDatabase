@@ -113,8 +113,13 @@ namespace TableDatabase
 
         private void removeSelectedRowButton_Click(object sender, EventArgs e)
         {
-            var selectedRowId = this.Grid.CurrentRow.Cells["id"].Value;
-            var selectedRowDeleter = new DBRowByIDDeleter((int)selectedRowId);
+            var dataGridViewRow = this.Grid.CurrentRow;
+            if (dataGridViewRow != null)
+            {
+                var selectedRowDeleter = new DBRowByIDDeleter(dataGridViewRow, this.Grid);
+                selectedRowDeleter.Process();
+            }
+        }
 
             selectedRowDeleter.Process();
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TableDatabase
 {
@@ -11,11 +12,15 @@ namespace TableDatabase
         public override bool Process() => DeleteRowById(RowID);
 
         public int RowID { get; set; }
+        public DataGridViewRow SelectedRow { get; set; }
 
-        public DBRowByIDDeleter(int rowIndex)
+        public DBRowByIDDeleter(DataGridViewRow row, DataGridView dgv)
         {
-            RowID = rowIndex;
+            SelectedRow = row;
+            RowID = (int)row.Cells["id"].Value;
+            Grid = dgv;
         }
+
 
         private bool DeleteRowById(int rowId)
         {
@@ -27,9 +32,13 @@ namespace TableDatabase
             query.Parameters.AddWithValue("id", rowId);
             query.ExecuteNonQuery();
             connection.Close();
-
-            //TODO: update grid wrt to deleted row from DB
+            DeleteRowFromGrid();
             return true;
+        }
+
+        private void DeleteRowFromGrid()
+        {
+            Grid.Rows.RemoveAt(SelectedRow.Index);
         }
     }
 }

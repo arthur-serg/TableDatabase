@@ -17,7 +17,7 @@ namespace TableDatabase
             var query = new SqlCommand(sqlExpression, connection);
             query.CommandType = CommandType.StoredProcedure;
             DataReader = query.ExecuteReader();
-
+            Grid = new DataGridView();
             Grid.AllowUserToAddRows = false;
             Grid.ColumnCount = DataReader.FieldCount;
         }

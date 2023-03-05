@@ -16,8 +16,7 @@ namespace TableDatabase
     public abstract class DBManager
     {
         public DataTable DataTable { get; set; } = new DataTable();
-        public DataGridView Grid { get; set; } = new DataGridView();
-
+        public DataGridView Grid { get; set; }
 
         public SqlConnectionStringBuilder SqlConnectionString { get; set; } = new SqlConnectionStringBuilder()
         {
@@ -25,6 +24,7 @@ namespace TableDatabase
             InitialCatalog = "pointsdb",
             IntegratedSecurity = true,
         };
+
 
         public abstract bool Process();
     }
