@@ -29,9 +29,9 @@ namespace TableDatabase
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.exitButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -47,6 +47,7 @@ namespace TableDatabase
             this.exportPlotButton = new System.Windows.Forms.Button();
             this.addRowsToTable = new System.Windows.Forms.Button();
             this.removeSelectedRowButton = new System.Windows.Forms.Button();
+            this.updateDataButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
@@ -122,7 +123,7 @@ namespace TableDatabase
             // 
             // saveToDatabaseButton
             // 
-            this.saveToDatabaseButton.Location = new System.Drawing.Point(258, 74);
+            this.saveToDatabaseButton.Location = new System.Drawing.Point(258, 75);
             this.saveToDatabaseButton.Name = "saveToDatabaseButton";
             this.saveToDatabaseButton.Size = new System.Drawing.Size(170, 33);
             this.saveToDatabaseButton.TabIndex = 6;
@@ -132,17 +133,17 @@ namespace TableDatabase
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(435, 4);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(726, 487);
             this.chart1.TabIndex = 7;
             this.chart1.Text = "chart1";
@@ -169,7 +170,7 @@ namespace TableDatabase
             // 
             // addRowsToTable
             // 
-            this.addRowsToTable.Location = new System.Drawing.Point(258, 110);
+            this.addRowsToTable.Location = new System.Drawing.Point(258, 112);
             this.addRowsToTable.Name = "addRowsToTable";
             this.addRowsToTable.Size = new System.Drawing.Size(170, 33);
             this.addRowsToTable.TabIndex = 10;
@@ -179,7 +180,7 @@ namespace TableDatabase
             // 
             // removeSelectedRowButton
             // 
-            this.removeSelectedRowButton.Location = new System.Drawing.Point(258, 146);
+            this.removeSelectedRowButton.Location = new System.Drawing.Point(258, 186);
             this.removeSelectedRowButton.Name = "removeSelectedRowButton";
             this.removeSelectedRowButton.Size = new System.Drawing.Size(170, 33);
             this.removeSelectedRowButton.TabIndex = 11;
@@ -187,11 +188,22 @@ namespace TableDatabase
             this.removeSelectedRowButton.UseVisualStyleBackColor = true;
             this.removeSelectedRowButton.Click += new System.EventHandler(this.removeSelectedRowButton_Click);
             // 
+            // updateDataButton
+            // 
+            this.updateDataButton.Location = new System.Drawing.Point(258, 149);
+            this.updateDataButton.Name = "updateDataButton";
+            this.updateDataButton.Size = new System.Drawing.Size(170, 33);
+            this.updateDataButton.TabIndex = 12;
+            this.updateDataButton.Text = "Update data in table";
+            this.updateDataButton.UseVisualStyleBackColor = true;
+            this.updateDataButton.Click += new System.EventHandler(this.updateDataButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1173, 533);
+            this.Controls.Add(this.updateDataButton);
             this.Controls.Add(this.removeSelectedRowButton);
             this.Controls.Add(this.addRowsToTable);
             this.Controls.Add(this.exportPlotButton);
@@ -232,6 +244,7 @@ namespace TableDatabase
         private System.Windows.Forms.DataGridViewTextBoxColumn X;
         private System.Windows.Forms.DataGridViewTextBoxColumn Y;
         private System.Windows.Forms.Button removeSelectedRowButton;
+        private System.Windows.Forms.Button updateDataButton;
     }
 }
 

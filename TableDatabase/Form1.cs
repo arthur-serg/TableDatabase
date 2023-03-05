@@ -11,6 +11,8 @@ namespace TableDatabase
 
         public DBCreator DbCreator { get; set; } = new DBCreator();
 
+        public DBUpdater DbUpdater { get; set; }
+
         private DataTable dataTable = new DataTable();
 
         public ChartDrawer chartDrawer { get; set; } = new ChartDrawer();
@@ -72,7 +74,14 @@ namespace TableDatabase
                 DbCreator.Process();
                 DbWriter.Grid = this.Grid;
 
-                await DbWriter.ProcessAsync();
+                var writeTask = DbWriter.ProcessAsync();
+                await writeTask;
+                if (writeTask.IsCompleted)
+                {
+                    MessageBox.Show("Data writing is completed", "Writing",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.None);
+                }
             }
         }
 
@@ -129,6 +138,20 @@ namespace TableDatabase
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
             e.Cancel = true;
+        }
+
+        private async void updateDataButton_Click(object sender, EventArgs e)
+        {
+            DbUpdater = new DBUpdater(this.dataGridView1);
+            var updateTask = DbUpdater.ProcessAsync();
+
+            await updateTask;
+            if (updateTask.IsCompleted)
+            {
+                MessageBox.Show("Update completed", "Update",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.None);
+            }
         }
     }
 }
