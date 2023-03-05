@@ -121,7 +121,13 @@ namespace TableDatabase
             }
         }
 
-            selectedRowDeleter.Process();
+        private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (double.TryParse(e.FormattedValue.ToString(), out _)) return;
+            MessageBox.Show("Cell can contain only numerical value. Check your data.", "Incorrect value",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            e.Cancel = true;
         }
     }
 }
