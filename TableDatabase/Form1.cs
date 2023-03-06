@@ -78,7 +78,7 @@ namespace TableDatabase
                 await writeTask;
                 if (writeTask.IsCompleted)
                 {
-                    MessageBox.Show("Data writing is completed", "Writing",
+                    MessageBox.Show("Saved.", "Writing",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.None);
                 }
@@ -148,7 +148,7 @@ namespace TableDatabase
             await updateTask;
             if (updateTask.IsCompleted)
             {
-                MessageBox.Show("Update completed", "Update",
+                MessageBox.Show("Update is completed", "Update",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.None);
             }
