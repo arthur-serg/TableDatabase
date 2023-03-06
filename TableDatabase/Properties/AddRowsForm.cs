@@ -38,7 +38,7 @@ namespace TableDatabase.Properties
             for (int i = 0; i < this.dataGridView1.Rows.Count; ++i)
             {
                 var row = this.dataGridView1.Rows[i];
-                row.Cells[0].Value = i + MainForm.Grid.Rows.Count;
+                row.Cells[0].Value = i + (int)MainForm.Grid.Rows[MainForm.Grid.Rows.Count - 1].Cells[0].Value + 1;
             }
         }
 
@@ -55,15 +55,17 @@ namespace TableDatabase.Properties
             this.Close();
         }
 
-        private void addRowsToGrid(DataGridView dgv1, DataGridView dgv2)
+        private void addRowsToGrid(DataGridView mainGrid, DataGridView sideGrid)
         {
-            for (int i = 0; i < dgv2.Rows.Count; ++i)
+            for (int i = 0; i < sideGrid.Rows.Count; ++i)
             {
-                var row = (DataGridViewRow)dgv2.Rows[i].Clone();
-                row.Cells[0].Value = dgv1.Rows.Count;
-                row.Cells[1].Value = dgv2.Rows[i].Cells[1].Value;
-                row.Cells[2].Value = dgv2.Rows[i].Cells[2].Value;
-                dgv1.Rows.Add(row);
+                var row = (DataGridViewRow)sideGrid.Rows[i].Clone();
+                for (int j = 0; j < row.Cells.Count; ++j)
+                {
+                    row.Cells[j].Value = sideGrid.Rows[i].Cells[j].Value;
+                }
+
+                mainGrid.Rows.Add(row);
             }
         }
 
