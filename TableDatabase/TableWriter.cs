@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TableDatabase
 {
-    public class DBWriter : DBManager
+    public class TableWriter : DBManager
     {
         public async Task ProcessAsync() => await Task.Run(Process);
 

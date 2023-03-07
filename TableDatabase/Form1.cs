@@ -7,11 +7,11 @@ namespace TableDatabase
 {
     public partial class Form1 : Form
     {
-        public DBWriter DbWriter { get; set; } = new DBWriter();
+        public TableWriter TableWriter { get; set; } = new TableWriter();
 
-        public DBCreator DbCreator { get; set; } = new DBCreator();
+        public TableCreator TableCreator { get; set; } = new TableCreator();
 
-        public DBUpdater DbUpdater { get; set; }
+        public TableUpdater TableUpdater { get; set; }
 
         private DataTable dataTable = new DataTable();
 
@@ -71,10 +71,10 @@ namespace TableDatabase
 
             if (rewrite == DialogResult.Yes)
             {
-                DbCreator.Process();
-                DbWriter.Grid = this.Grid;
+                TableCreator.Process();
+                TableWriter.Grid = this.Grid;
 
-                var writeTask = DbWriter.ProcessAsync();
+                var writeTask = TableWriter.ProcessAsync();
                 await writeTask;
                 if (writeTask.IsCompleted)
                 {
@@ -87,7 +87,7 @@ namespace TableDatabase
 
         private void LoadDatabase()
         {
-            var DbReader = new DBReader();
+            var DbReader = new TableReader();
             DbReader.Process();
             var reader = DbReader.DataReader;
             if (reader == null) return;
@@ -125,7 +125,7 @@ namespace TableDatabase
             var dataGridViewRow = this.Grid.CurrentRow;
             if (dataGridViewRow != null)
             {
-                var selectedRowDeleter = new DBRowByIDDeleter(dataGridViewRow, this.Grid);
+                var selectedRowDeleter = new TableRowDeleter(dataGridViewRow, this.Grid);
                 selectedRowDeleter.Process();
             }
         }
@@ -142,8 +142,8 @@ namespace TableDatabase
 
         private async void updateDataButton_Click(object sender, EventArgs e)
         {
-            DbUpdater = new DBUpdater(this.dataGridView1);
-            var updateTask = DbUpdater.ProcessAsync();
+            TableUpdater = new TableUpdater(this.dataGridView1);
+            var updateTask = TableUpdater.ProcessAsync();
 
             await updateTask;
             if (updateTask.IsCompleted)

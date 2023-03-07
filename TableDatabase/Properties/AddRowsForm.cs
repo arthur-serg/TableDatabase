@@ -44,7 +44,7 @@ namespace TableDatabase.Properties
 
         private async void addDataToTableButton_Click(object sender, EventArgs e)
         {
-            var dbWriter = new DBWriter
+            var dbWriter = new TableWriter
             {
                 Grid = this.dataGridView1
             };

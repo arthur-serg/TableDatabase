@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace TableDatabase
 {
-    public class DBReader : DBManager
+    public class TableReader : DBManager
     {
         public SqlDataReader DataReader { get; set; }
 

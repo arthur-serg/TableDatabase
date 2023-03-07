@@ -73,12 +73,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChartDrawer.cs" />
-    <Compile Include="DBReader.cs" />
-    <Compile Include="DBCreator.cs" />
+    <Compile Include="TableReader.cs" />
+    <Compile Include="TableCreator.cs" />
     <Compile Include="DBManager.cs" />
-    <Compile Include="DBRowByIDDeleter.cs" />
-    <Compile Include="DBUpdater.cs" />
-    <Compile Include="DBWriter.cs" />
+    <Compile Include="TableRowDeleter.cs" />
+    <Compile Include="TableUpdater.cs" />
+    <Compile Include="TableWriter.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

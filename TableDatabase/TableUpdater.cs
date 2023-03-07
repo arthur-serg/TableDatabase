@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace TableDatabase
 {
-    public class DBUpdater : DBManager
+    public class TableUpdater : DBManager
     {
-        public DBUpdater(DataGridView dgv)
+        public TableUpdater(DataGridView dgv)
         {
             Grid = dgv;
         }
