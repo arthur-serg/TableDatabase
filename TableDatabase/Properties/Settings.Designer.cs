@@ -22,5 +22,16 @@ namespace TableDatabase.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ASUS-A17\\SQLEXPRESS;Initial Catalog=pointsdb;Integrated Security=True" +
+            "")]
+        public string pointsdbConnectionString {
+            get {
+                return ((string)(this["pointsdbConnectionString"]));
+            }
+        }
     }
 }
