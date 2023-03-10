@@ -76,7 +76,7 @@
     <Compile Include="TableReader.cs" />
     <Compile Include="TableCreator.cs" />
     <Compile Include="DBManager.cs" />
-    <Compile Include="TableRowDeleter.cs" />
+    <Compile Include="TableDeleter.cs" />
     <Compile Include="TableUpdater.cs" />
     <Compile Include="TableWriter.cs" />
     <Compile Include="Form1.cs">

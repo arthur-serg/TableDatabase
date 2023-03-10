@@ -125,7 +125,7 @@ namespace TableDatabase
             var dataGridViewRow = this.Grid.CurrentRow;
             if (dataGridViewRow != null)
             {
-                var selectedRowDeleter = new TableRowDeleter(dataGridViewRow, this.Grid);
+                var selectedRowDeleter = new TableDeleter(dataGridViewRow, this.Grid);
                 selectedRowDeleter.Process();
             }
         }

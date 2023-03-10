@@ -4,14 +4,14 @@ using System.Windows.Forms;
 
 namespace TableDatabase
 {
-    public class TableRowDeleter : DBManager
+    public class TableDeleter : DBManager
     {
         public override bool Process() => DeleteRowById(RowID);
 
         public int RowID { get; set; }
         public DataGridViewRow SelectedRow { get; set; }
 
-        public TableRowDeleter(DataGridViewRow row, DataGridView dgv)
+        public TableDeleter(DataGridViewRow row, DataGridView dgv)
         {
             SelectedRow = row;
             RowID = (int)row.Cells["id"].Value;
