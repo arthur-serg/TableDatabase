@@ -22,14 +22,17 @@ namespace TableDatabase
         private bool DeleteRowById(int rowId)
         {
             var sqlExpression = "sp_DeleteRowById";
-            var connection = new SqlConnection(SqlConnectionString.ConnectionString);
-            connection.Open();
-            var query = new SqlCommand(sqlExpression, connection);
-            query.CommandType = CommandType.StoredProcedure;
-            query.Parameters.AddWithValue("id", rowId);
-            query.ExecuteNonQuery();
-            connection.Close();
-            DeleteRowFromGrid();
+            using (var connection = new SqlConnection(SqlConnectionString.ConnectionString))
+            {
+                connection.Open();
+                var query = new SqlCommand(sqlExpression, connection);
+                query.CommandType = CommandType.StoredProcedure;
+                query.Parameters.AddWithValue("id", rowId);
+                query.ExecuteNonQuery();
+                connection.Close();
+                DeleteRowFromGrid();
+            }
+
             return true;
         }
 

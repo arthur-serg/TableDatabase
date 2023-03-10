@@ -25,7 +25,6 @@ namespace TableDatabase
         public override bool Process()
         {
             ReadDb();
-            Console.WriteLine(Grid.Rows.Count);
             return true;
         }
 
