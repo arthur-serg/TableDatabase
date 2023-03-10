@@ -23,42 +23,50 @@ namespace TableDatabase
             set => dataGridView1 = value;
         }
 
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        public Form1() => InitializeComponent();
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            LoadDatabase();
-        }
+        private void Form1_Load(object sender, EventArgs e) => LoadDatabase();
 
-        private void exitButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void exitButton_Click(object sender, EventArgs e) => this.Close();
 
         private void generateTableButton_Click(object sender, EventArgs e)
         {
-            var isParsed = double.TryParse(this.textBox1.Text.ToString(), out var value);
+            var rewrite =
+                MessageBox.Show(
+                    "This action will delete current table from database and will create an empty one.",
+                    "Create new table.", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (!isParsed || !(value > 0))
-            {
-                MessageBox.Show("Incorrect value of rows count.", "Incorrect value", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
 
-            this.Grid.Rows.Clear();
-            for (int i = 0; i < value; ++i)
+            switch (rewrite)
             {
-                this.Grid.Rows.AddRange(new DataGridViewRow());
-            }
+                case DialogResult.Yes:
+                {
+                    TableCreator.Process();
+                    var isParsed = double.TryParse(this.textBox1.Text.ToString(), out var value);
 
-            for (int i = 0; i < this.Grid.Rows.Count; ++i)
-            {
-                var row = this.Grid.Rows[i];
-                row.Cells[0].Value = i;
+                    if (!isParsed || !(value > 0))
+                    {
+                        MessageBox.Show("Incorrect value of rows count.", "Incorrect value", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    this.Grid.Rows.Clear();
+                    for (int i = 0; i < value; ++i)
+                    {
+                        this.Grid.Rows.AddRange(new DataGridViewRow());
+                    }
+
+                    for (int i = 0; i < this.Grid.Rows.Count; ++i)
+                    {
+                        var row = this.Grid.Rows[i];
+                        row.Cells[0].Value = i;
+                    }
+
+                    break;
+                }
+                case DialogResult.No: return;
+                default: return;
             }
         }
 
@@ -66,7 +74,7 @@ namespace TableDatabase
         {
             var rewrite =
                 MessageBox.Show(
-                    "Are you sure? This action will delete current table in DB. If you want to add data to current table without deleting click No",
+                    "Are you sure? This action will delete current table in DB. If you want to update table click No and choose \"Update\" button",
                     "Possible rewriting of table", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (rewrite == DialogResult.Yes)
